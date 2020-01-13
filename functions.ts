@@ -40,3 +40,11 @@ userInput = "Hello";
 if (typeof userInput === "string") {
   userName = userInput;
 }
+
+//Type 'never' checking
+//This function never returns
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
+
+generateError("Error occurred!", 500);
