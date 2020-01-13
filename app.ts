@@ -40,12 +40,15 @@
 //   console.log("Author");
 // }
 
+type Combinable = number | string;
+type resultConverter = "as-number" | "as-text";
+
 /** Checking out UNION types */
 function combine(
-  input1: number | string,
-  input2: number | string,
-  resultTypeConversion: "as-number" | "as-text"
-): number | string {
+  input1: Combinable,
+  input2: Combinable,
+  resultTypeConversion: resultConverter
+): Combinable {
   let result;
   if (
     (typeof input1 === "number" && typeof input2 === "number") ||
