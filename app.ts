@@ -43,21 +43,29 @@
 /** Checking out UNION types */
 function combine(
   input1: number | string,
-  input2: number | string
+  input2: number | string,
+  resultTypeConversion: "as-number" | "as-text"
 ): number | string {
   let result;
-  if (typeof input1 === "number" && typeof input2 === "number") {
-    result = input1 + input2;
+  if (
+    (typeof input1 === "number" && typeof input2 === "number") ||
+    resultTypeConversion === "as-number"
+  ) {
+    result = +input1 + +input2;
   } else {
     result = input1.toString() + input2.toString();
   }
   return result;
 }
 
-let combinedAges = combine(20, 30);
+let combinedAges = combine(26, 30, "as-number");
 
 console.log(combinedAges);
 
-combinedAges = combine("Cheese", "Fish");
+combinedAges = combine("30", "54", "as-number");
+
+console.log(combinedAges);
+
+combinedAges = combine("Cheese", "Fish", "as-text");
 
 console.log(combinedAges);
